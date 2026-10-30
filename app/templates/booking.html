@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Table{% endblock %}
+
+{% block content %}
+  <div class="form-card">
+    <h2>Book a Table</h2>
+    <form method="POST">
+      <label for="table_id">Available Table</label>
+      <select name="table_id" id="table_id" required>
+        {% for table in tables %}
+          <option value="{{ table.id }}">Table {{ table.table_number }} ({{ table.seats }} seats)</option>
+        {% endfor %}
+      </select>
+
+      <label>Date</label>
+      <input type="date" name="booking_date" required>
+
+      <label>Start Time</label>
+      <input type="time" name="start_time" required>
+
+      <label>End Time</label>
+      <input type="time" name="end_time" required>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+{% endblock %}
